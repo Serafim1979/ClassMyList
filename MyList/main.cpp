@@ -1,4 +1,6 @@
 #include<iostream>
+#include<cstdlib>
+#include<ctime>
 
 class List
 {
@@ -151,7 +153,7 @@ void List::display()
     tmp = head;
     while(tmp != nullptr)
     {
-        std::cout << tmp->data << std::endl;
+        std::cout << tmp->data << " " ;
         tmp = tmp->pNext;
     }
 }
@@ -176,6 +178,80 @@ void List::my_clear()
 
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
+    List lst;
+    std::srand(time(NULL));
+
+    // Adding 10 random values to the list
+    for(int i = 0; i < 10; i++)
+    {
+        int tmp = rand() % 10;
+        lst.my_push_back(tmp);
+    }
+    lst.display();
+    std::cout << std:: endl;
+    std::cout << "Size = " << lst.get_size() << std::endl;
+    std::cout << std::endl;
+
+    // Testing my_push_back
+    lst.my_push_back(3);
+    lst.my_push_back(4);
+    lst.my_push_back(5);
+    lst.display();
+    std::cout << std::endl;
+    std::cout << "Size = " << lst.get_size() << std::endl;
+    std::cout << std::endl;
+
+    // Testing my_push_front
+    lst.my_push_front(3);
+    lst.my_push_front(4);
+    lst.my_push_front(5);
+    lst.display();
+    std::cout << std::endl;
+    std::cout << "Size = " << lst.get_size() << std::endl;
+    std::cout << std::endl;
+
+    // Testing my_insert
+    lst.my_insert(111, 3);
+    lst.my_insert(333, 5);
+    lst.my_insert(777, 9);
+    lst.display();
+    std::cout << std::endl;
+    std::cout << "Size = " << lst.get_size() << std::endl;
+    std::cout << std::endl;
+
+    // Testing my_pop_back
+    lst.my_pop_back();
+    lst.display();
+    std::cout << std::endl;
+    std::cout << "Size = " << lst.get_size() << std::endl;
+    std::cout << std::endl;
+
+    // Testing my_pop_front
+    lst.my_pop_front();
+    lst.display();
+    std::cout << std::endl;
+    std::cout << "Size = " << lst.get_size() << std::endl;
+    std::cout << std::endl;
+
+    // Testing my_remove
+    lst.my_remove(2);
+    lst.my_remove(3);
+    lst.my_remove(6);
+    lst.display();
+    std::cout << std::endl;
+    std::cout << "Size = " << lst.get_size() << std::endl;
+    std::cout << std::endl;
+
+    // Testing my_remove_range_between
+    lst.my_remove_range_between(3, 7);
+    lst.display();
+    std::cout << std::endl;
+    std::cout << "Size = " << lst.get_size() << std::endl;
+    std::cout << std::endl;
+
+    // All clear List
+    lst.my_clear();
+    lst.display();
+    std::cout << "List clear" << std::endl;
     return 0;
 }
